@@ -7,6 +7,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap"></noscript>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap"></noscript>
     <style>
 
         /* Estilos gerais do corpo */
@@ -49,6 +55,84 @@ header p {
     font-weight: 400;
 }
 
+.social-containerr {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    margin-top: 60px;
+}
+
+.instaa {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 1px;
+}
+
+.instaa svg {
+    fill: #000000;
+    transition: fill 0.3s;
+}
+
+body.dark-mode .instaa svg {
+    fill: #ffffff;
+}
+
+.zapp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1px;
+}
+
+.zapp svg {
+    fill: #000000;
+    transition: fill 0.3s;
+}
+
+body.dark-mode .zapp svg {
+    fill: #ffffff;
+}
+
+.social-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.insta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.insta svg {
+    fill: #000000;
+    transition: fill 0.3s;
+}
+
+body.dark-mode .insta svg {
+    fill: #ffffff;
+}
+
+.zap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.zap svg {
+    fill: #000000;
+    transition: fill 0.3s;
+}
+
+body.dark-mode .zap svg {
+    fill: #ffffff;
+}
+
 /* Botão de alternar tema */
 .theme-toggle {
     position: absolute;
@@ -60,6 +144,7 @@ header p {
     font-size: 24px;
     color: #000000;
     transition: color 0.3s;
+    z-index: 1002; /* Garante que o botão fique acima do menu */
 }
 
 body.dark-mode .theme-toggle {
@@ -91,6 +176,14 @@ nav {
     background-color: #ffffff;
     flex-wrap: wrap;
     transition: background-color 0.3s;
+    font-family: 'Roboto Serif', serif;
+}
+
+/* Estilo para o link ativo na navegação */
+nav a.active-tab {
+    border-bottom: 2px solid #c5c5c5; /* Sublinhado azul */
+    color: rgb(185, 185, 185); /* Cor do texto */
+    font-weight: bold; /* Texto em negrito */
 }
 
 body.dark-mode nav {
@@ -110,8 +203,8 @@ body.dark-mode nav a {
 }
 
 nav a:hover {
-    background-color: #f1f1f1;
-    border-radius: 15px;
+    background-color: #ffffff;
+    color: #000000;
 }
 
 body.dark-mode nav a:hover {
@@ -144,16 +237,25 @@ body.dark-mode nav a:hover {
     gap: 10px;
 }
 
-.gallery .image-container {
+.about-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.gallery .image-container, .about-gallery .image-container {
     position: relative;
     overflow: hidden;
     max-height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.gallery img {
-    width: 100%;
-    height: auto;
-    max-width: 500px;
+.gallery img, .about-gallery img {
+    width: auto;
+    height: 100%;
+    max-width: 100%;
     padding: 5px;
     object-fit: cover;
     object-position: center;
@@ -162,8 +264,10 @@ body.dark-mode nav a:hover {
 
 /* Estilos para o formulário de contato */
 .contact-form {
-    max-width: 600px;
+    max-width: 100%;
     margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .contact-form input,
@@ -236,7 +340,9 @@ body.dark-mode .close-menu {
 /* Aplicar a animação aos itens do menu */
 .menu-item-1,
 .menu-item-2,
-.menu-item-3 {
+.menu-item-3,
+.menu-item-4,
+.menu-item-5 {
     opacity: 0; /* Inicia invisível */
     animation: slideInMenu 0.5s ease-out forwards;
 }
@@ -254,10 +360,20 @@ body.dark-mode .close-menu {
     animation-delay: 0.21s; /* Terceiro item */
 }
 
+.menu-item-4 {
+    animation-delay: 0.29s; /* Quarto item */
+}
+
+.menu-item-5 {
+    animation-delay: 0.37s; /* Quinto item */
+}
+
 /* Aplicar animação apenas quando o menu estiver aberto */
 nav.active .menu-item-1,
 nav.active .menu-item-2,
-nav.active .menu-item-3 {
+nav.active .menu-item-3,
+nav.active .menu-item-4,
+nav.active .menu-item-5 {
     opacity: 0;
     animation: slideInMenu 0.45s ease-out forwards;
 }
@@ -272,6 +388,14 @@ nav.active .menu-item-2 {
 
 nav.active .menu-item-3 {
     animation-delay: 0.33s;
+}
+
+nav.active .menu-item-4 {
+    animation-delay: 0.44s;
+}
+
+nav.active .menu-item-5 {
+    animation-delay: 0.55s;
 }
 
 /* Animação de abertura do menu */
@@ -314,6 +438,13 @@ nav.active .menu-item-3 {
         flex-direction: column;
         justify-content: center;
         align-items: center;
+    }
+    
+    .social-containerr {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 60px;
     }
 
     body.dark-mode nav {
@@ -391,6 +522,22 @@ nav.active .menu-item-3 {
         <a href="#" class="tab-link active menu-item-1" data-tab="home">Galeria</a>
         <a href="#" class="tab-link menu-item-2" data-tab="about">Sobre</a>
         <a href="#" class="tab-link menu-item-3" data-tab="contact">Contato</a>
+        <div class="social-containerr">
+            <div class="zapp menu-item-4">
+                <a href="https://wa.me/5571985245630" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="instaa menu-item-5">
+                <a href="https://www.instagram.com/jairoluigi_/" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
     </nav>
     <div class="overlay" id="overlay"></div>
     <div class="content">
@@ -428,9 +575,24 @@ nav.active .menu-item-3 {
         <div id="contact" class="tab-content">
             <div class="contact-form">
                 <input type="text" placeholder="Seu nome" required>
-                <input type="email" placeholder="Seu e-mail" required>
-                <textarea rows="5" placeholder="Deixe uma mensagem bacana :)" required></textarea>
+                <input type="email" placeholder="Seu e-mail ou seu telefone" required>
+                <textarea rows="5" placeholder="Olá! Tenho interesse em contratar um serviço de fotografia." required></textarea>
                 <button type="submit">Enviar</button>
+            </div>
+            <div class="social-container">
+                <div class="zap">
+                    <a href="https://wa.me/5571985245630" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                        </svg>
+                    </a>
+                <div class="insta">
+                    <a href="https://www.instagram.com/jairoluigi_/" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+                </div>
             </div>
         </div>
         <div id="about" class="tab-content">
@@ -448,9 +610,9 @@ nav.active .menu-item-3 {
                 </div>
             </div>
             <p style="text-align: center; font-size: 20px;">
-                Fotógrafo e designer amador nas horas vagas, apaixonado por contar histórias capturando momentos e criando imagens como forma de me expressar.
+                Planos e pacotes de fotografia para ensaios individuais e em casal, casamentos, aniversários, eventos corporativos e muito mais.
             </p>
-            <div class="gallery">
+            <div class="about-gallery">
                 <div class="image-container">
                     <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_3840/1c00d3161424131.63c55b6bae5cd.png" alt="Foto 13">
                 </div>
@@ -460,57 +622,92 @@ nav.active .menu-item-3 {
                 <div class="image-container">
                     <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_3840/5ab65b143549103.627c6a0fdd14d.jpg" alt="Foto 15">
                 </div>
+                <div class="image-container">
+                    <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_3840/5ab65b143549103.627c6a0fdd14d.jpg" alt="Foto 16">
+                </div>
+                <div class="image-container">
+                    <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_3840/5ab65b143549103.627c6a0fdd14d.jpg" alt="Foto 17">                
+                </div>
+                <div class="image-container">
+                    <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_3840/5ab65b143549103.627c6a0fdd14d.jpg" alt="Foto 17">                
+                </div>
             </div>
-            </div>
-            
+        </div>
+    </div>    
         
     <script>
-        document.querySelectorAll('.tab-link').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelectorAll('.tab-link').forEach(item => item.classList.remove('active'));
-                document.querySelectorAll('.tab-content').forEach(item => item.classList.remove('active'));
-                
-                this.classList.add('active');
-                document.getElementById(this.getAttribute('data-tab')).classList.add('active');
+        document.addEventListener("DOMContentLoaded", function () {
+            const tabLinks = document.querySelectorAll('.tab-link');
+
+            tabLinks.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    console.log('Clicou em um link de aba:  ' + this.getAttribute('data-tab'));
+
+                    // Remove a classe .active-tab de todos os links
+                    tabLinks.forEach(item => item.classList.remove('active-tab'));
+
+                    // Adiciona a classe .active-tab ao link clicado
+                    this.classList.add('active-tab');
+
+                    // Remove a classe .active de todas as abas de conteúdo
+                    document.querySelectorAll('.tab-content').forEach(item => item.classList.remove('active'));
+
+                    // Adiciona a classe .active à aba de conteúdo correspondente
+                    const tabId = this.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                });
             });
-        });
 
-        const themeToggle = document.getElementById('theme-toggle');
-        const body = document.body;
-
-        themeToggle.addEventListener('click', () => {
-            body.classList.toggle('dark-mode');
-            const isDarkMode = body.classList.contains('dark-mode');
-            localStorage.setItem('dark-mode', isDarkMode);
-            updateToggleIcon(isDarkMode);
-        });
-
-        const savedDarkMode = localStorage.getItem('dark-mode') === 'true';
-        if (savedDarkMode) {
-            body.classList.add('dark-mode');
-        }
-        updateToggleIcon(savedDarkMode);
-
-        function updateToggleIcon(isDarkMode) {
-            const icon = themeToggle.querySelector('svg');
-            if (isDarkMode) {
-                icon.innerHTML = '<path d="M12 2c-5.523 0-10 4.477-10 10s4.477 10 10 10 10-4.477 10-10-4.477-10-10-10zm0 2v16a8 8 0 1 0 0-16z"/>'; // Ícone de lua
-            } else {
-                icon.innerHTML = '<path d="M12 2c-5.523 0-10 4.477-10 10s4.477 10 10 10 10-4.477 10-10-4.477-10-10-10zm0 2v16a8 8 0 1 0 0-16z"/>'; // Ícone de sol
+            // Ativar a aba inicial (Galeria) ao carregar a página
+            const initialTab = document.querySelector('.tab-link.active');
+            if (initialTab) {
+                initialTab.classList.add('active-tab');
+                const initialTabId = initialTab.getAttribute('data-tab');
+                document.getElementById(initialTabId).classList.add('active');
             }
-        }
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const themeToggle = document.getElementById('theme-toggle');
+            const body = document.body;
+
+            themeToggle.addEventListener('click', () => {
+                body.classList.toggle('dark-mode');
+                const isDarkMode = body.classList.contains('dark-mode');
+                localStorage.setItem('dark-mode', isDarkMode);
+                updateToggleIcon(isDarkMode);
+            });
+
+            const savedDarkMode = localStorage.getItem('dark-mode') === 'true';
+            if (savedDarkMode) {
+                body.classList.add('dark-mode');
+            }
+            updateToggleIcon(savedDarkMode);
+
+            function updateToggleIcon(isDarkMode) {
+                const icon = themeToggle.querySelector('svg');
+                if (isDarkMode) {
+                    icon.innerHTML = '<path d="M12 2c-5.523 0-10 4.477-10 10s4.477 10 10 10 10-4.477 10-10-4.477-10-10-10zm0 2v16a8 8 0 1 0 0-16z"/>'; // Ícone de lua
+                } else {
+                    icon.innerHTML = '<path d="M12 2c-5.523 0-10 4.477-10 10s4.477 10 10 10 10-4.477 10-10-4.477-10-10-10zm0 2v16a8 8 0 1 0 0-16z"/>'; // Ícone de sol
+                }
+            }
+        });
+        
 
         document.addEventListener("DOMContentLoaded", function () {
     const menuToggle = document.getElementById('menu-toggle');
     const navMenu = document.getElementById('nav-menu');
     const overlay = document.getElementById('overlay');
     const closeMenu = document.getElementById('close-menu');
+    const themeToggle = document.getElementById('theme-toggle');
 
     // Função para abrir o menu
     function openMenu() {
         navMenu.classList.add('active');
         overlay.classList.add('active');
+        themeToggle.style.zIndex = 998; // Garante que o botão de alternar tema fique abaixo do menu
 
         // Reinicia as animações dos itens do menu
         document.querySelectorAll('.menu-item-1, .menu-item-2, .menu-item-3').forEach(item => {
@@ -524,6 +721,7 @@ nav.active .menu-item-3 {
     function closeMenuWithAnimation() {
         navMenu.classList.add('closing');
         overlay.classList.remove('active');
+        themeToggle.style.zIndex = 1002; // Garante que o botão de alternar tema fique acima do menu
 
         // Espera a animação de fechamento terminar
         navMenu.addEventListener('animationend', () => {
@@ -613,6 +811,7 @@ nav.active .menu-item-3 {
     });
 
     let startX = 0;
+
     modal.addEventListener("touchstart", (e) => {
         startX = e.touches[0].clientX;
     });
@@ -635,7 +834,7 @@ style.innerHTML = `
         background: rgba(0, 0, 0, 0.8);
         align-items: center;
         justify-content: center;
-        z-index: 1001;
+        z-index: 1003;
         opacity: 0;
         transition: opacity 0.3s ease-in-out;
     }
